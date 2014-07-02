@@ -1,10 +1,27 @@
 require 'spec_helper'
 
-page_contents = { Home:  {content: "Sample App", title: "Ruby on Rails Tutorial Sample App | Home"},
-                  Help:  {content: "Help", title: "Ruby on Rails Tutorial Sample App | Help"},
-                  About: {content: "About Us", title: "Ruby on Rails Tutorial Sample App | About Us"}
-                }
+## Returns the full title on a per-page basis.
+#def full_title(page_title = nil)
+#  base_title = "Ruby on Rails Tutorial Sample App"
+#  if page_title.empty? || page_title.nil?
+#    base_title
+#  else
+#    "#{base_title} | #{page_title}"
+#  end
+#end
+
 describe "Static pages" do
+  
+  page_contents = { Home:    { content: "Sample App",
+                               title: full_title()         },
+                    Help:    { content: "Help",
+                               title: full_title("Help")     },
+                    About:   { content: "About Us",
+                               title: full_title("About Us") },
+                    Contact: { content: "Contact",
+                               title: full_title("Contact")  }
+                  }
+
   
   page_contents.each do |page_name, page_attrs|
 
