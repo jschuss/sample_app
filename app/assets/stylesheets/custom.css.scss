@@ -1,0 +1,151 @@
+@import "bootstrap";
+
+/* colors */
+$gray-med-light: #bbb;
+
+/* fonts */
+
+//
+// mixin for bullet proof font declaration syntax
+//
+@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style : normal, $font-stretch : normal) {
+@font-face {
+font-family: '#{$font-family}';
+src: url(font-path('#{$font-filename}.ttf')) format('truetype');
+font-weight: $font-weight;
+font-style: $font-style;
+font-stretch: $font-stretch;
+}
+}
+
+@include declare-font-face('Munich', 'Munich');
+@include declare-font-face('Alex', 'Alex');
+@include declare-font-face('Steelfish', 'steelfish rg');
+@include declare-font-face('Steelfish', 'steelfish rg it', $font-weight: normal, $font-style: italic);
+@include declare-font-face('Steelfish', 'steelfish outline', $font-weight: normal, $font-style: oblique);
+
+/* universal */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 60px;    
+}
+
+section {
+    overflow: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.center {
+    text-align: center;
+    h1 {
+        margin-bottom: 10px;
+    }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+}
+
+h1.heading {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: -4px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2, h3 {
+    font-size: 2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: $gray-light;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: $gray-med-light;
+    a{
+        color: desaturate(lighten($link-color, 30%), 30%);
+        
+        &:hover {
+            color: desaturate(lighten($link-hover-color, 30%), 30%);
+        }
+    }
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+/* header */
+
+#bgl {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+}
+
+.container#top {
+    @include gradient-horizontal(white, $gray-darker, 0%, 70%);
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    font-family: 'Steelfish';
+    font-size: 40px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 1;
+    
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+/* footer */
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid $gray-med-light;
+    color: $gray-light;
+    
+    a {
+        color: $gray;
+        &:hover {
+            color: $gray-darker;
+        }
+    }
+    
+    small {
+        float: left;
+    }
+
+    ul {
+        float: right;
+        list-style: none;
+        li {
+          float: left;
+          margin-left: 10px;
+        }
+    }
+}
