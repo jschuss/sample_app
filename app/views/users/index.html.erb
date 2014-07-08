@@ -1,0 +1,10 @@
+<% provide(:title, 'User List') %>
+<% if @users.empty? %>
+  <p>No users found.</p>
+<% else %>
+  <table class="table table-hover no-top-border">
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+<% end %>

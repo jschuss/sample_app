@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
-  
-  
+  resources :users
+
   #actual pages
   root 'static_pages#home'
-  get '/users/new'
-  get '/users/signin'
-  
+
   #aliased pages
   get '/help' => 'static_pages#help', as: 'help'
   get '/about' => 'static_pages#about', as: 'about'
   get '/contact' => 'static_pages#contact', as: 'contact'
-  
+  get '/signin' => 'users#signin', as: 'signin'
+
   #redirects
   get '/home', to: redirect('/'), as: 'home'
-  get '/signin', to: redirect('/users/signin'), as: 'signin'
   get '/signup', to: redirect('/users/new'), as: 'signup'
 
   # The priority is based upon order of creation: first created -> highest priority.
